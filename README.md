@@ -304,7 +304,6 @@ AI 会自动调用 `executeQuery` 工具，执行查询并返回结果。
 
 ### 示例 2：安全的写操作流程
 
-![写操作预览](./docs/images/example-write-preview.png)
 
 **步骤 1：预览写操作**
 ```
@@ -312,7 +311,6 @@ AI 会自动调用 `executeQuery` 工具，执行查询并返回结果。
 AI: 调用 executeWrite，返回预览信息和 confirmId
 ```
 
-![确认写操作](./docs/images/example-write-confirm.png)
 
 **步骤 2：确认执行**
 ```
@@ -322,7 +320,6 @@ AI: 调用 confirmWrite，使用 confirmId 执行操作
 
 ### 示例 3：查询表结构
 
-![查询元数据](./docs/images/example-metadata.png)
 
 **用户提问：**
 > "查看 users 表的结构"
@@ -332,7 +329,6 @@ AI 调用 `getMetadata` 工具，返回表的完整结构信息，包括列定�
 
 ### 示例 4：批量操作
 
-![批量执行](./docs/images/example-batch.png)
 
 **用户提问：**
 > "批量插入 3 条用户记录"
