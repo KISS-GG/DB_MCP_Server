@@ -1,0 +1,17 @@
+version: '3'
+
+services:
+  db-mcp-server:
+    container_name: db-mcp-server
+    ports:
+      - "8888:8888"
+    image: db-mcp-server:v1.0
+    restart: always
+    network_mode: bridge
+    volumes:
+      - /path/to/db-mcp-server/logs/:/app/logs/
+    environment:
+      - SPRING_PROFILES_ACTIVE=prod
+      - TZ=Asia/Shanghai
+
+

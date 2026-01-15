@@ -1,0 +1,1 @@
+docker build -t db-mcp-server:v1.0 .

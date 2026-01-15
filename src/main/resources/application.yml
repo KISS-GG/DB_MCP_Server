@@ -1,0 +1,48 @@
+server:
+  port: 8888
+
+spring:
+  application:
+    name: db-mcp-server
+  profiles:
+    active: ${SPRING_PROFILES_ACTIVE:dev}
+  ai:
+    mcp:
+      server:
+        name: db-mcp-server
+        version: 1.0.0
+        type: ASYNC
+        instructions: |
+          数据库MCP服务器，提供以下工具：
+          1. executeQuery - 执行查询SQL
+          2. executeWrite - 执行写操作(预览模式)
+          3. confirmWrite - 确认执行写操作
+          4. executeBatch - 批量执行SQL(事务)
+          5. getMetadata - 查询元数据
+          6. executeDDL - 执行DDL语句
+          支持数据库：MySQL、PostgreSQL、Oracle、SQL Server、KingBase
+        capabilities:
+          tool: true
+          resource: true
+          prompt: true
+          completion: true
+        sse-message-endpoint: /mcp/messages
+        sse-endpoint: /sse
+        keep-alive-interval: 30s
+
+logging:
+  level:
+    top.zymnb.mcpservertest: DEBUG
+  file:
+    name: logs/db-mcp-server.log
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"  # 暴露所有端点（开发环境可用）
+        # 或只暴露需要的：include: health,info,mappings,beans,env
+  endpoint:
+    health:
+      show-details: always  # 可选：显示详细健康信息
+      
