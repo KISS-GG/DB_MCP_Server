@@ -122,10 +122,10 @@ curl http://localhost:8888/actuator/health
 
 Spring Actuator 提供以下监控端点：
 
-- `http://localhost:8081/actuator/health` - 健康检查
-- `http://localhost:8081/actuator/mappings` - 端点映射
-- `http://localhost:8081/actuator/beans` - Bean 信息
-- `http://localhost:8081/actuator/env` - 环境变量
+- `http://localhost:8888/actuator/health` - 健康检查
+- `http://localhost:8888/actuator/mappings` - 端点映射
+- `http://localhost:8888/actuator/beans` - Bean 信息
+- `http://localhost:8888/actuator/env` - 环境变量
 
 ---
 
