@@ -41,8 +41,8 @@ sequenceDiagram
     participant MCP as MCP Server
     participant DB as Database
 
-    AI->>MCP: 连接 SSE (/sse)
-    MCP-->>AI: 建立连接
+    AI->>MCP: HTTP POST 请求 (/mcp)
+    MCP-->>AI: 返回 JSON 响应
     AI->>MCP: 发送工具调用请求
     MCP->>DB: 执行数据库操作
     DB-->>MCP: 返回结果
@@ -51,9 +51,9 @@ sequenceDiagram
 
 ### 核心组件
 
-- **MCP Server** - 基于 Spring AI MCP Server WebFlux 实现
-- **SSE 端点** - `/sse` 提供 Server-Sent Events 连接
-- **消息端点** - `/mcp/messages` 处理 MCP 协议消息
+- **MCP Server** - 基于 Spring AI MCP Server Streamable HTTP 实现
+- **HTTP 端点** - `/mcp` 提供 HTTP Streaming 连接（POST 方法）
+- **消息端点** - `/mcp` 处理 MCP 协议消息
 - **工具提供者** - 通过 `@Tool` 注解自动注册数据库操作工具
 - **连接池** - HikariCP 高性能数据库连接池
 
@@ -111,7 +111,8 @@ curl http://localhost:8888/actuator/health
 {
   "mcpServers": {
     "db-mcp-server": {
-      "url": "http://localhost:8888/sse"
+      "url": "http://localhost:8888/mcp",
+      "transport": "streamable-http"
     }
   }
 }

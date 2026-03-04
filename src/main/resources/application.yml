@@ -11,7 +11,6 @@ spring:
       server:
         name: db-mcp-server
         version: 1.0.0
-        type: ASYNC
         instructions: |
           数据库MCP服务器，提供以下工具：
           1. executeQuery - 执行查询SQL
@@ -26,9 +25,15 @@ spring:
           resource: true
           prompt: true
           completion: true
-        sse-message-endpoint: /mcp/messages
-        sse-endpoint: /sse
         keep-alive-interval: 30s
+        protocol: STREAMABLE
+        type: SYNC
+        resource-change-notification: true
+        tool-change-notification: true
+        prompt-change-notification: true
+        streamable-http:
+          mcp-endpoint: /mcp
+          keep-alive-interval: 30s
 
 logging:
   level:
